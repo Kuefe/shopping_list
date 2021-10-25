@@ -18,5 +18,9 @@
         android:id="@+id/articleDetailFragment"
         android:name="de.kuefe.shoppinglist.articledetail.ArticleDetailFragment"
         android:label="fragment_article_detail"
-        tools:layout="@layout/fragment_article_detail" />
+        tools:layout="@layout/fragment_article_detail" >
+        <argument
+            android:name="selectedArticle"
+            app:argType="de.kuefe.shoppinglist.model.Article" />
+    </fragment>
 </navigation>

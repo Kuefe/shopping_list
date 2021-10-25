@@ -60,7 +60,7 @@ class ShoppingListFragment : Fragment() {
             if (null != it) {
                 // Must find the NavController from the Fragment
                 this.findNavController().navigate(
-                    ShoppingListFragmentDirections.actionShoppingListFragmentToArticleDetailFragment()
+                    ShoppingListFragmentDirections.actionShoppingListFragmentToArticleDetailFragment(it)
                 )
                 // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayArticleDetailsComplete()

@@ -1,11 +1,13 @@
 package de.kuefe.shoppinglist.articledetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import de.kuefe.shoppinglist.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import de.kuefe.shoppinglist.databinding.FragmentArticleDetailBinding
+import timber.log.Timber
 
 
 /**
@@ -16,17 +18,20 @@ import de.kuefe.shoppinglist.R
 class ArticleDetailFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_article_detail, container, false)
+        val application = requireNotNull(activity).application
+        val binding = FragmentArticleDetailBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        val article = ArticleDetailFragmentArgs.fromBundle(requireArguments()).selectedArticle
+        Timber.i("Timber: " + article)
+        val viewModelFactory = ArticleDetailViewModelFactory(article, application)
+        binding.viewModel = ViewModelProvider(
+            this, viewModelFactory
+        ).get(ArticleDetailViewModel::class.java)
+        return binding.root
     }
 
 }
