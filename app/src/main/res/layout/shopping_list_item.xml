@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="article"
+            name="databaseArticle"
             type="de.kuefe.shoppinglist.model.Article" />
     </data>
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@{String.valueOf(article.quantity)}"
+            android:text="@{String.valueOf(databaseArticle.quantity)}"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2.5" />
 
@@ -27,7 +27,7 @@
             android:id="@+id/article_unit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{article.unit}"
+            android:text="@{databaseArticle.unit}"
             app:layout_constraintStart_toEndOf="@id/article_quantity_text"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="kg" />
@@ -36,7 +36,7 @@
             android:id="@+id/article_description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{article.description}"
+            android:text="@{databaseArticle.description}"
             app:layout_constraintStart_toEndOf="@id/article_unit_text"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Bananen" />

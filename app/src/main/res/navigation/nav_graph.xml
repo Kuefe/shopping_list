@@ -22,5 +22,8 @@
         <argument
             android:name="selectedArticle"
             app:argType="de.kuefe.shoppinglist.model.Article" />
+        <action
+            android:id="@+id/action_articleDetailFragment_to_shoppingListFragment"
+            app:destination="@id/shoppingListFragment" />
     </fragment>
 </navigation>

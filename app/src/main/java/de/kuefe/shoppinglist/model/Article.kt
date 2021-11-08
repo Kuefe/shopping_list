@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Article(
     val id: Int,
-    val quantity: Double,
-    val unit: String,
-    val description: String
+    var quantity: Double,
+    var unit: String,
+    var description: String
 ): Parcelable

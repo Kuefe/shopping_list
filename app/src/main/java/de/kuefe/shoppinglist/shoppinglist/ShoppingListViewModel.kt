@@ -4,9 +4,16 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import de.kuefe.shoppinglist.database.ShopplingListDatabase
 import de.kuefe.shoppinglist.model.Article
+import de.kuefe.shoppinglist.repository.ArticleRepository
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class ShoppingListViewModel(application: Application) : ViewModel() {
+    private val database = ShopplingListDatabase.getInstance(application)
+    private val articleRepository = ArticleRepository(database)
 
     private val _articleList = MutableLiveData<List<Article>>()
 
@@ -45,15 +52,13 @@ class ShoppingListViewModel(application: Application) : ViewModel() {
         _navigateToSelectedArticle.value = article
     }
 
-    init {
-        defaultList()
-    }
-
-    private fun defaultList() {
-        _articleList.value = mutableListOf(
-            Article(2, 1.0, "Packung", "Salz"),
-            Article(1, 2.0, "kg", "Bananen"),
-            Article(3, 3.0, "Stück", "Butter")
-        )
+    fun getAllArticles() {
+        viewModelScope.launch {
+            try {
+                _articleList.value = articleRepository.getAllArticles()
+            } catch (e: Exception) {
+                Timber.e(e.message)
+            }
+        }
     }
 }

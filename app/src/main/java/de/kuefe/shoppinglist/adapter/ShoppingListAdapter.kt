@@ -24,7 +24,7 @@ class ShoppingListAdapter(val onClickListener: OnClickListener) :
     class ArticleViewHolder(private var binding: ShoppingListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Article) {
-            binding.article = item
+            binding.databaseArticle = item
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()

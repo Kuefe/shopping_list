@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.kuefe.shoppinglist.model.Article
 
 /**
- * When there is no Article data (data is null), hide the [RecyclerView], otherwise show it.
+ * When there is no DatabaseArticle data (data is null), hide the [RecyclerView], otherwise show it.
  */
 @BindingAdapter("listdata")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
@@ -14,4 +14,5 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Article>?) {
         recyclerView.scrollToPosition(0)
     }
 }
+
 

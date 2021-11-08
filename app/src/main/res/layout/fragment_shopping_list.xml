@@ -10,7 +10,7 @@
             type="de.kuefe.shoppinglist.shoppinglist.ShoppingListViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="de.kuefe.shoppinglist.shoppinglist.ShoppingListFragment">
@@ -20,9 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:listdata="@{viewModel.articleList}"
             tools:listitem="@layout/shopping_list_item" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="submit"
+            android:src="@drawable/outline_add_24" />
+    </RelativeLayout>
 </layout>

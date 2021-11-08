@@ -12,12 +12,12 @@ import androidx.room.RoomDatabase
  * This pattern is pretty much the same for any database,
  * so you can reuse it.
  */
-@Database(entities = arrayOf(Article::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(DatabaseArticle::class), version = 1, exportSchema = false)
 abstract class ShopplingListDatabase : RoomDatabase() {
     /**
      * Connects the database to the DAO.
      */
-    abstract val shoopingListDao: ShoppingListDao
+    abstract val shoppingListDao: ShoppingListDao
 
     /**
      * Define a companion object, this allows us to add functions on the SleepDatabase class.

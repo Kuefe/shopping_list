@@ -15,26 +15,55 @@
         android:layout_height="match_parent"
         tools:context=".articledetail.ArticleDetailFragment">
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/description_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedArticle.description}"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="Bezeichnung"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.article.description}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/quantity_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(viewModel.selectedArticle.quantity)}"
-            app:layout_constraintTop_toBottomOf="@id/description_text" />
+            android:hint="Menge"
+            app:layout_constraintTop_toBottomOf="@id/description_text">
 
-        <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={`` +viewModel.article.quantity}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/unit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.selectedArticle.unit}"
-            app:layout_constraintTop_toBottomOf="@id/quantity_text" />
+            android:hint="Einheit"
+            app:layout_constraintTop_toBottomOf="@id/quantity_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@={viewModel.article.unit}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Speichern"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
