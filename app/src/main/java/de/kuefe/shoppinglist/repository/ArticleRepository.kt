@@ -31,4 +31,24 @@ class ArticleRepository(private val database: ShopplingListDatabase) {
             database.shoppingListDao.insert(asDatabaseModel(article))
         }
     }
+
+    /**
+     * delete an article in the database
+     */
+
+    suspend fun deleteArticle(article: Article){
+        return withContext(Dispatchers.IO) {
+            database.shoppingListDao.delete(asDatabaseModel(article))
+        }
+    }
+
+    /**
+     * count of rows
+     */
+
+    suspend fun countOfArticles(): Int {
+        return withContext(Dispatchers.IO   ) {
+            database.shoppingListDao.getCount()
+        }
+    }
 }

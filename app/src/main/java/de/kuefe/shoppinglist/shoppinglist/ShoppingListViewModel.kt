@@ -15,10 +15,17 @@ class ShoppingListViewModel(application: Application) : ViewModel() {
     private val database = ShopplingListDatabase.getInstance(application)
     private val articleRepository = ArticleRepository(database)
 
+    private var countOfArticles: Int = 0
+
     private val _articleList = MutableLiveData<List<Article>>()
 
     val articleList: LiveData<List<Article>>
         get() = _articleList
+
+    private val _article = MutableLiveData<Article>()
+
+    val article: LiveData<Article>
+        get() = _article
 
     /**
      * Variable that tells the Fragment to navigate to a specific [ArticleDetailFragment]
@@ -53,6 +60,7 @@ class ShoppingListViewModel(application: Application) : ViewModel() {
     }
 
     fun getAllArticles() {
+        Timber.i("Timber: getAllArticles")
         viewModelScope.launch {
             try {
                 _articleList.value = articleRepository.getAllArticles()
@@ -60,5 +68,17 @@ class ShoppingListViewModel(application: Application) : ViewModel() {
                 Timber.e(e.message)
             }
         }
+    }
+
+    fun deleteArticle(article: Article): Int {
+        viewModelScope.launch {
+            try {
+                articleRepository.deleteArticle(article)
+                countOfArticles = articleRepository.countOfArticles()
+            } catch (e: Exception) {
+                Timber.e(e.message)
+            }
+        }
+        return countOfArticles
     }
 }

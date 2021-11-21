@@ -16,6 +16,12 @@ interface ShoppingListDao {
     @Update
     suspend fun update(databaseArticle: DatabaseArticle)
 
+    @Delete
+    suspend fun delete(databaseArticle: DatabaseArticle)
+
     @Query("DELETE FROM article_table")
     suspend fun clear()
+
+    @Query("SELECT COUNT(id) FROM article_table")
+    fun getCount(): Int
 }

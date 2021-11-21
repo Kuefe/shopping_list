@@ -13,6 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         tools:context=".articledetail.ArticleDetailFragment">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -20,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bezeichnung"
+            android:paddingTop="16dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -34,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Menge"
+            android:paddingTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/description_text">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -48,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Einheit"
+            android:paddingTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/quantity_text">
 
             <com.google.android.material.textfield.TextInputEditText

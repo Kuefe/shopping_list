@@ -10,37 +10,50 @@
             type="de.kuefe.shoppinglist.model.Article" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/design_default_color_secondary_variant"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
 
-        <TextView
-            android:id="@+id/article_quantity_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@{String.valueOf(databaseArticle.quantity)}"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="2.5" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/article_unit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{databaseArticle.unit}"
-            app:layout_constraintStart_toEndOf="@id/article_quantity_text"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="kg" />
+            <TextView
+                android:id="@+id/article_quantity_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="@{String.valueOf(databaseArticle.quantity)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2.5" />
 
-        <TextView
-            android:id="@+id/article_description_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{databaseArticle.description}"
-            app:layout_constraintStart_toEndOf="@id/article_unit_text"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Bananen" />
+            <TextView
+                android:id="@+id/article_unit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="@{databaseArticle.unit}"
+                app:layout_constraintStart_toEndOf="@id/article_quantity_text"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="kg" />
+
+            <TextView
+                android:id="@+id/article_description_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="@{databaseArticle.description}"
+                app:layout_constraintStart_toEndOf="@id/article_unit_text"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Bananen" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

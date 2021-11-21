@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.kuefe.shoppinglist.databinding.ShoppingListItemBinding
 import de.kuefe.shoppinglist.model.Article
-
+import timber.log.Timber
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -32,11 +32,12 @@ class ShoppingListAdapter(val onClickListener: OnClickListener) :
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-
+        Timber.i("Timber: onBindViewHolder")
         val item = getItem(position)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(item)
         }
+
         holder.bind(item)
     }
 
@@ -64,7 +65,16 @@ class ShoppingListAdapter(val onClickListener: OnClickListener) :
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return newItem.id == oldItem.id
         }
+    }
 
+    fun getItem(holder: RecyclerView.ViewHolder): Article {
+        return getItem(holder.adapterPosition)
+    }
+
+    fun removeItem(holder: RecyclerView.ViewHolder, countOfArticles: Int) {
+        val actualPosition = holder.adapterPosition
+        notifyItemRemoved(actualPosition)
+        notifyItemRangeChanged(actualPosition, countOfArticles);
     }
 
     /**
@@ -75,4 +85,5 @@ class ShoppingListAdapter(val onClickListener: OnClickListener) :
     class OnClickListener(val clickListener: (article: Article) -> Unit) {
         fun onClick(article: Article) = clickListener(article)
     }
+
 }
